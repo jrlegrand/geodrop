@@ -1,0 +1,35 @@
+doctype html
+html
+	head
+	link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+	style
+		include includes/css/materialize.min.css
+		include includes/css/style.css
+	title="GeoDrop"
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+body
+	//nav
+	//	div(class='nav-wrapper light-green darken-1')
+	//		a(href='/', class='brand-logo center') GeoDrop
+
+	div(id='map')
+	div(class='fixed-action-btn')
+		a(class='btn-floating btn-large waves-effect waves-light red', href='/add')
+			i(class='large material-icons') add
+	
+	div(id='center-map-button')
+		a(class='btn-floating btn-medium waves-effect waves-light grey', href='#!')
+			i(class='medium material-icons') my_location
+	
+	div(id='message-modal', class='modal')
+		div(class='modal-content')
+			h4 Message
+			p(id='message')
+		div(class='modal-footer')
+			a(href='#!', class='modal-action modal-close waves-effect waves-green btn-flat') OK
+			
+	script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+	script
+		include includes/js/materialize.min.js		
+		include includes/js/map.js
+	script(async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB11cjr-XgrSv4yNmS8Lx8-QbGsW8DAtew&callback=initMap')

@@ -1,0 +1,27 @@
+doctype html
+html
+	head
+	link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+	style
+		include includes/css/materialize.min.css
+		include includes/css/style.css
+	title="GeoDrop"
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+body
+	div(class='container')
+		div(class='row')
+			div(class='col s12')
+				h4 Enter a message to drop at your current geolocation.
+			form(class='col s12', id='geodrop-form')
+				div(class='row')
+					div(class='input-field col s12')
+						textarea(class='materialize-textarea', id='geodrop-text')
+						label(for='message') Message
+						a(class='waves-effect waves-light btn grey lighten-1', style='margin-right: 5px;', href='/') Cancel
+						a(class='waves-effect waves-light btn', id='geodrop-submit-button') Submit
+							i(class='material-icons right') send
+		
+	script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+	script
+		include includes/js/materialize.min.js		
+		include includes/js/add.js
