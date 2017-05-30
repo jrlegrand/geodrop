@@ -8,10 +8,10 @@ var app = express();
 app.use(bodyParser.json());
 
 var connection = mysql.createConnection({
-	host     : 'mysql.coderx.io',
-	user     : 'jrlegrand',
-	password : 'qubert12!',
-	database : 'geodrop'
+	host     : '',
+	user     : '',
+	password : '',
+	database : ''
 });
 
 connection.connect();
