@@ -13,7 +13,7 @@ $('#geodrop-submit-button').click(function(data) {
 				console.log('lng', lng);
 				
 				$.ajax({
-					url: 'http://localhost:3000/api/v1/geodrop',
+					url: '/api/v1/geodrop',
 					method: 'post',
 					contentType: 'application/json',
 					data: JSON.stringify({lat: lat, lng: lng, text: text})
