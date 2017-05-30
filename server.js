@@ -9,10 +9,17 @@ var app = express();
 app.use(bodyParser.json());
 
 var connection = mysql.createConnection({
+<<<<<<< HEAD
 	host     : secrets.host(),
 	user     : secrets.user(),
 	password : secrets.password(),
 	database : secrets.database()
+=======
+	host     : '',
+	user     : '',
+	password : '',
+	database : ''
+>>>>>>> f50e63fd64b3890ed11d9aadf9702c8ed7bc0e12
 });
 
 connection.connect();
