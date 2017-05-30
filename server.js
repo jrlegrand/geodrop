@@ -2,16 +2,17 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql'); 
+var secrets = require('../geodrop-secrets'); 
 
 var app = express();
 
 app.use(bodyParser.json());
 
 var connection = mysql.createConnection({
-	host     : 'mysql.coderx.io',
-	user     : 'jrlegrand',
-	password : 'qubert12!',
-	database : 'geodrop'
+	host     : secrets.host(),
+	user     : secrets.user(),
+	password : secrets.password(),
+	database : secrets.database()
 });
 
 connection.connect();
