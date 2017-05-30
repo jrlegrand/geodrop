@@ -8,9 +8,9 @@ var app = express();
 app.use(bodyParser.json());
 
 var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '',
+	host     : 'mysql.coderx.io',
+	user     : 'jrlegrand',
+	password : 'qubert12!',
 	database : 'geodrop'
 });
 
@@ -40,7 +40,7 @@ app.get('/api/v1/geodrop/location/:lat,:lng', function(req, res){
 // ids 12 and 4 are nearby
 // http://localhost:3000/api/v1/geodrop/location/36.1912198,-86.7296563/id/12
 app.get('/api/v1/geodrop/location/:lat,:lng/id/:id/', function(req, res){
-	connection.query('SELECT *, ((ACOS(SIN(' + req.params.lat + ' * PI() / 180) * SIN(lat * PI() / 180) + COS(' + req.params.lat + ' * PI() / 180) * COS(lat * PI() / 180) * COS((' + req.params.lng + ' - lng) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM `geodrop` WHERE id = ' + req.params.id + ' HAVING distance <= 0.010 ORDER BY distance ASC', function(err, rows, fields) {
+	connection.query('SELECT *, ((ACOS(SIN(' + req.params.lat + ' * PI() / 180) * SIN(lat * PI() / 180) + COS(' + req.params.lat + ' * PI() / 180) * COS(lat * PI() / 180) * COS((' + req.params.lng + ' - lng) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM `geodrop` WHERE id = ' + req.params.id + ' HAVING distance <= 0.030 ORDER BY distance ASC', function(err, rows, fields) {
 		if (err) throw err;	
 		res.json(rows);
 	});

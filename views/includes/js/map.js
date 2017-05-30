@@ -17,8 +17,30 @@ function initMap() {
 			  disableDefaultUI: true
 			});
 			
+			// Add circle overlay and bind to center
+			var circle = new google.maps.Circle({
+			  map: map,
+			  center: center,
+			  radius: 30,    // 10 miles in metres
+			  fillColor: '#2196F3',
+			  fillOpacity: 0.2,
+			  strokeColor: '#0D47A1',
+			  strokeOpacity: 0.5
+			});
+			
+			var direction = 1;
+			var rMin = 25, rMax = 30;
+			setInterval(function() {
+				var radius = circle.getRadius();
+				if ((radius > rMax) || (radius < rMin)) {
+					direction *= -1;
+				}
+				circle.setRadius(radius + direction * 0.3);
+			}, 60);
+
+			
 			$.ajax({ // create all the markers
-				url: 'http://localhost:3000/api/v1/geodrop/location/' + lat + ',' + lng,
+				url: '/api/v1/geodrop/location/' + lat + ',' + lng,
 				method: 'get',
 			}).done(function(res) {
 				console.log('result', res);
@@ -33,11 +55,11 @@ function initMap() {
 					
 					marker[r.id].addListener('click', function() {
 						$.ajax({
-							url: 'http://localhost:3000/api/v1/geodrop/location/36.1912198,-86.7296563',
+							url: '/api/v1/geodrop/location/36.1912198,-86.7296563',
 							method: 'get',
 						}).done(function(res) {
 							$.ajax({ // is this marker close enough?
-								url: 'http://localhost:3000/api/v1/geodrop/location/' + lat + ',' + lng + '/id/' + r.id,
+								url: '/api/v1/geodrop/location/' + lat + ',' + lng + '/id/' + r.id,
 								method: 'get',
 							}).done(function(res) {
 								var message = (res.length > 0 ? res[0].text : 'Not close enough!');
