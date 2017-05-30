@@ -49,7 +49,7 @@ function initMap() {
 					marker[r.id] = new google.maps.Marker({
 						position: { lat: r.lat, lng: r.lng },
 						//icon: 'https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png',
-						icon: 'http://coderx.io/drop/img/flag.png',
+						//icon: 'https://coderx.io/drop/img/flag.png',
 						map: map
 					});
 					
